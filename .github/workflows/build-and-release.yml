@@ -1,0 +1,50 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # Docker Buildx setup removed
+      - name: Build (customize as needed)
+        run: |
+          echo "Building project..."
+          # Add your build commands here, e.g.:
+          # docker build -t your-image-name .
+          mkdir devstral_24b
+          cd devstral_24b
+          wget -O sha256-3dc762df9951ecae062822bbaa78b01f1252e2e316c911adbedcbe97bbff5b26 https://registry.ollama.ai/v2/library/devstral/blobs/sha256:3dc762df9951ecae062822bbaa78b01f1252e2e316c911adbedcbe97bbff5b26
+          wget -O sha256-ea9ec42474e0b11615d2287c0a4b25f89cd1bd84d034113696dfd6af6ba1ae5d https://registry.ollama.ai/v2/library/devstral/blobs/sha256:ea9ec42474e0b11615d2287c0a4b25f89cd1bd84d034113696dfd6af6ba1ae5d
+          wget -O sha256-43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1 https://registry.ollama.ai/v2/library/devstral/blobs/sha256:43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1
+          wget -O sha256-5725afc40acd80cbeefba61e41cf50eb7924f6ed2fe6aec2dc6fa0e9f2c396d1 https://registry.ollama.ai/v2/library/devstral/blobs/sha256:5725afc40acd80cbeefba61e41cf50eb7924f6ed2fe6aec2dc6fa0e9f2c396d1
+          wget -O sha256-b3a2c9a8fef9be8d2ef951aecca36a36b9ea0b70abe9359eab4315bf4cd9be01 https://registry.ollama.ai/v2/library/devstral/blobs/sha256:b3a2c9a8fef9be8d2ef951aecca36a36b9ea0b70abe9359eab4315bf4cd9be01
+          cd ..
+      - name: Archive files
+        run: |
+          echo "Archiving files..."
+          zip -r -s 1.5g devstral_24b.zip devstral_24b
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Automated Release ${{ github.run_number }}
+          body: |
+            Automated release from GitHub Actions.
+          files: | 
+            devstral_24b.z*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
