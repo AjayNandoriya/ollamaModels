@@ -30,7 +30,11 @@ jobs:
         run: |
           echo "Archiving files..."
           zip -r -s 1600M devstral_24b.zip devstral_24b
-
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b
+          path: devstral_24b.z*
   release:
     needs: build
     runs-on: ubuntu-latest
