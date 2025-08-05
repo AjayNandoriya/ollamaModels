@@ -30,11 +30,71 @@ jobs:
         run: |
           echo "Archiving files..."
           zip -r -s 1600M devstral_24b.zip devstral_24b
-      - name: Upload artifacts
+      - name: Upload artifacts devstral_24b.zip
         uses: actions/upload-artifact@v4
         with:
-          name: devstral_24b
-          path: devstral_24b.z*
+          name: devstral_24b.zip
+          path: devstral_24b.zip
+      - name: Upload artifacts devstral_24b.z01
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z01
+          path: devstral_24b.z01
+      - name: Upload artifacts devstral_24b.z02
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z02
+          path: devstral_24b.z02
+      - name: Upload artifacts devstral_24b.z03
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z03
+          path: devstral_24b.z03
+      - name: Upload artifacts devstral_24b.z04
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z04
+          path: devstral_24b.z04
+      - name: Upload artifacts devstral_24b.z05
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z05
+          path: devstral_24b.z05
+      - name: Upload artifacts devstral_24b.z06
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z06
+          path: devstral_24b.z06
+      - name: Upload artifacts devstral_24b.z07
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z07
+          path: devstral_24b.z07
+      - name: Upload artifacts devstral_24b.z08
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z08
+          path: devstral_24b.z08
+      - name: Upload artifacts devstral_24b.z09
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z09
+          path: devstral_24b.z09
+      - name: Upload artifacts devstral_24b.z10
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z10
+          path: devstral_24b.z10
+      - name: Upload artifacts devstral_24b.z11
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z11
+          path: devstral_24b.z11
+      - name: Upload artifacts devstral_24b.z12
+        uses: actions/upload-artifact@v4
+        with:
+          name: devstral_24b.z12
+          path: devstral_24b.z12
   release:
     needs: build
     runs-on: ubuntu-latest
