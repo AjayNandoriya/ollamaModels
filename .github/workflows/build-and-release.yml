@@ -75,26 +75,6 @@ jobs:
         with:
           name: devstral_24b.z08
           path: devstral_24b.z08
-      - name: Upload artifacts devstral_24b.z09
-        uses: actions/upload-artifact@v4
-        with:
-          name: devstral_24b.z09
-          path: devstral_24b.z09
-      - name: Upload artifacts devstral_24b.z10
-        uses: actions/upload-artifact@v4
-        with:
-          name: devstral_24b.z10
-          path: devstral_24b.z10
-      - name: Upload artifacts devstral_24b.z11
-        uses: actions/upload-artifact@v4
-        with:
-          name: devstral_24b.z11
-          path: devstral_24b.z11
-      - name: Upload artifacts devstral_24b.z12
-        uses: actions/upload-artifact@v4
-        with:
-          name: devstral_24b.z12
-          path: devstral_24b.z12
   release:
     needs: build
     runs-on: ubuntu-latest
